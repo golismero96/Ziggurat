@@ -1,10 +1,10 @@
 <p align="center">
     <a href="https://bloomui.com" title="BloomUI.com">
-        <img src="https://bloomui.s3.us-east-2.amazonaws.com/tokyo-logo.png" alt="Tokyo Free White Typescript React Admin Dashboard">
+        <img src="https://bloomui.s3.us-east-2.amazonaws.com/tokyo-logo.png" alt="Ziggurat Free White Typescript React Admin Dashboard">
     </a>
 </p>
 <h1 align="center">
-    <b>Tokyo Free White Typescript React Admin Dashboard</b>
+    <b>Ziggurat Free White Typescript React Admin Dashboard</b>
     <br>
     <a href="https://twitter.com/intent/tweet?url=https://bloomui.com&text=I like this React admin dashboard">
         <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" />
@@ -23,19 +23,19 @@
     This free and open source admin dashboard template is built for React and it’s bootstrapped from Facebook’s create-react-app. All NPM dependencies are up to date and it contains multiple fully customized components based on the popular frontend components framework, Material-UI.
 </p>
 <p>
-Tokyo Free White Typescript Dashboard features a nice classic light & clean design and color scheme.
+Ziggurat Free White Typescript Dashboard features a nice classic light & clean design and color scheme.
 </p>
 <p>
 You can customize the color scheme and style by editing a single variables files. This Typescript admin dashboard doesn’t use SCSS stylesheets but the more modern approach with styled-components.
 </p>
 <p>
-We’ve included a few page examples for most used user flows that will give you a solid base for getting started with your new project’s development. With very light modifications you can even integrate Tokyo Free White Typescript Dashboard into existing projects giving them a much deserved makeover.
+We’ve included a few page examples for most used user flows that will give you a solid base for getting started with your new project’s development. With very light modifications you can even integrate Ziggurat Free White Typescript Dashboard into existing projects giving them a much deserved makeover.
 </p>
 
 ---
 <h3>Updrade to PRO</h3>
 
-<p>If you're looking for more features like translations, complex user flows, redux examples and more,  we recommend taking a look at the premium version (Tokyo White Typescript Dashboard) on <a href="https://bloomui.com">bloomui.com</a></p>
+<p>If you're looking for more features like translations, complex user flows, redux examples and more,  we recommend taking a look at the premium version (Ziggurat White Typescript Dashboard) on <a href="https://bloomui.com">bloomui.com</a></p>
 
 ---
 
