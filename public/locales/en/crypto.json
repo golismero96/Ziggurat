@@ -2,5 +2,8 @@
     "Welcome": {
         "username": "Welcome, {{username}}!",
         "world": "Welcome World!"
-    }
+    },
+    "basket_delivered": "{{count}} basket delivered",
+    "basket_delivered_two": "{{count}} baskets delivered",
+    "weekly_basket_title": "In this Week's Grootbasket — {{today, date}}"
 }

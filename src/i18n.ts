@@ -22,10 +22,18 @@ i18n
   .init({
     lng: 'fa',
     fallbackLng: 'fa',
-    debug: process.env.NODE_ENV === 'development',
+    supportedLngs: ['en', 'fa'],
+    debug: false, // process.env.NODE_ENV === 'development',
     initImmediate: false,
     interpolation: {
-      escapeValue: false // not needed for react as it escapes by default
+      escapeValue: false, // not needed for react as it escapes by default
+
+      format: (value, format, lng) => {
+        if (format === 'date') {
+          return new Intl.DateTimeFormat(lng).format(value);
+        }
+        return value;
+      }
     }
   });
 

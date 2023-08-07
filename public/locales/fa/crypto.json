@@ -2,5 +2,8 @@
     "Welcome": {
         "username": "خوش آمدید, {{username}}!",
         "world": "سلام دنیا"
-    }
+    },
+    "basket_delivered": "{{count}} سبد دریافت شد",
+    "basket_delivered_other": "{{count}} سبدها دریافت شد",
+    "weekly_basket_title": " در گروت بسکت این هفته — {{today, date}}"
 }

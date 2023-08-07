@@ -22,13 +22,8 @@ import HeaderButtons from './Buttons';
 import HeaderUserbox from './Userbox';
 import HeaderMenu from './Menu';
 import { useThemeUIContext } from 'src/theme/ThemeContext';
-import { PureLightTheme } from 'src/theme/schemes/PureLightTheme';
 
-import { initReactI18next } from 'react-i18next';
-import Backend from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
-import i18next from 'i18next';
-// import i18n from 'src/i18n';
+import { useTranslation } from 'react-i18next';
 
 const HeaderWrapper = styled(Box)(
   ({ theme }) => `
@@ -52,6 +47,7 @@ const HeaderWrapper = styled(Box)(
 function Header() {
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const theme = useTheme();
+  const { i18n } = useTranslation();
 
   const themeUicontext = useThemeUIContext();
   const themeUIProps = useMemo(() => {
@@ -65,9 +61,9 @@ function Header() {
   }, [themeUicontext]);
   const setThemeName = (direction: Direction) => {
     if (direction === 'ltr') {
-      i18next.changeLanguage('en');
+      i18n.changeLanguage('en');
     } else {
-      i18next.changeLanguage('fa');
+      i18n.changeLanguage('fa');
     }
     themeUIProps?.setDirection(direction);
   };
@@ -147,6 +143,19 @@ function Header() {
 
         <button onClick={() => setThemeName('rtl')}>RTL</button>
         <button onClick={() => setThemeName('ltr')}>LTR</button>
+        <div className="navbar-menu">
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <select
+                value={i18n.language}
+                onChange={(e) => i18n.changeLanguage(e.target.value)}
+              >
+                <option value="en">English</option>
+                <option value="fa">Persian</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </Box>
     </HeaderWrapper>
   );

@@ -40,6 +40,18 @@ function PageHeader() {
           </Trans>
         </Typography>
         <Typography
+          component="h4"
+          gutterBottom
+          color={
+            theme.palette.mode === 'dark'
+              ? theme.colors.alpha.white[100]
+              : theme.colors.alpha.black[100]
+          }
+          variant="h4"
+        >
+          <Trans i18nKey="userMessagesUnread">{t('Welcome.world')}</Trans>
+        </Typography>
+        <Typography
           component="h5"
           gutterBottom
           color={
@@ -49,7 +61,10 @@ function PageHeader() {
           }
           variant="h5"
         >
-          <Trans i18nKey="userMessagesUnread">{t('Welcome.world')}</Trans>
+          {t('basket_delivered', { count: 2342 })}
+          {t('weekly_basket_title', {
+            today: new Date()
+          })}
         </Typography>
         <Typography
           variant="subtitle2"
