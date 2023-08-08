@@ -12,7 +12,8 @@ import {
   useTheme,
   Toolbar,
   Typography,
-  Direction
+  Direction,
+  PaletteMode
 } from '@mui/material';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import { SidebarContext } from 'src/contexts/SidebarContext';
@@ -21,9 +22,9 @@ import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import HeaderButtons from './Buttons';
 import HeaderUserbox from './Userbox';
 import HeaderMenu from './Menu';
-import { useThemeUIContext } from 'src/theme/ThemeContext';
 
 import { useTranslation } from 'react-i18next';
+import { useThemeMode } from 'src/theme/ThemeContext';
 
 const HeaderWrapper = styled(Box)(
   ({ theme }) => `
@@ -49,23 +50,19 @@ function Header() {
   const theme = useTheme();
   const { i18n } = useTranslation();
 
-  const themeUicontext = useThemeUIContext();
-  const themeUIProps = useMemo(() => {
-    if (!themeUicontext) return null;
-    return {
-      themeMode: themeUicontext?.themeMode,
-      setThemeMode: themeUicontext?.setThemeMode,
-      direction: themeUicontext?.direction,
-      setDirection: themeUicontext?.setDirection
-    };
-  }, [themeUicontext]);
+  const { themeMode, setThemeMode, direction, setDirection } = useThemeMode();
+  const switchMode = (_mode: PaletteMode) => {
+    setThemeMode(_mode);
+    console.log('5555555', _mode);
+  };
+
   const setThemeName = (direction: Direction) => {
     if (direction === 'ltr') {
       i18n.changeLanguage('en');
     } else {
       i18n.changeLanguage('fa');
     }
-    themeUIProps?.setDirection(direction);
+    setDirection(direction);
   };
 
   return (
@@ -122,7 +119,7 @@ function Header() {
             sx={{ fontSize: '1rem' }}
             onClick={() => {
               const newMode = theme.palette.mode === 'dark' ? 'light' : 'dark';
-              themeUIProps.setThemeMode(newMode);
+              switchMode(newMode);
               theme.palette.mode = newMode;
             }}
             color="inherit"

@@ -1,9 +1,18 @@
 import { useEffect } from 'react';
 import NProgress from 'nprogress';
-import { Box, CircularProgress, useTheme } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  Stack,
+  Typography,
+  styled,
+  useTheme
+} from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 function SuspenseLoader() {
   const theme = useTheme();
+  const { t } = useTranslation();
   useEffect(() => {
     NProgress.start();
 
@@ -23,13 +32,23 @@ function SuspenseLoader() {
         background:
           theme.palette.mode === 'dark'
             ? theme.colors.alpha.black[100]
-            : theme.colors.alpha.white[10]
+            : theme.colors.alpha.white[100]
       }}
       display="flex"
       alignItems="center"
       justifyContent="center"
     >
-      <CircularProgress size={64} disableShrink thickness={3} />
+      <Stack sx={{ alignItems: 'center' }} spacing={2}>
+        <CircularProgress size={60} disableShrink thickness={3} />
+        <Typography
+          sx={{
+            mt: 5
+          }}
+          variant="h5"
+        >
+          {t('loading')}
+        </Typography>
+      </Stack>
     </Box>
   );
 }

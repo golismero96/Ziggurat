@@ -4,6 +4,6 @@
         "world": "Welcome World!"
     },
     "basket_delivered": "{{count}} basket delivered",
-    "basket_delivered_two": "{{count}} baskets delivered",
+    "basket_delivered_other": "{{count}} baskets delivered",
     "weekly_basket_title": "In this Week's Grootbasket — {{today, date}}"
 }
