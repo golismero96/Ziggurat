@@ -6,15 +6,17 @@ import React, {
   useEffect,
   useState
 } from 'react';
-import { Direction } from '@mui/system';
 import { PaletteMode, useTheme } from '@mui/material';
 import { isEqual, isFunction } from 'lodash';
 
+type TypeLanguage = 'en' | 'fa';
+
 export interface ThemeContextInterface {
-  themeMode: PaletteMode;
-  setThemeMode: (nextThemeMode: SetStateAction<PaletteMode>) => void;
-  direction: Direction;
-  setDirection: (nextDirection: SetStateAction<Direction>) => void;
+  themeMode?: PaletteMode;
+  setThemeMode?: (nextThemeMode: SetStateAction<PaletteMode>) => void;
+  toggleMode: (mode: PaletteMode) => void;
+  language?: TypeLanguage;
+  setLanguage?: (nextLanguage: SetStateAction<TypeLanguage>) => void;
 }
 
 interface ThemeUiContextInterface {
@@ -26,7 +28,7 @@ const ThemeModeKey = 'theme_mode';
 const I18N_CONFIG_KEY = 'i18nextLng';
 
 export const initialStateThemoMode: PaletteMode = 'light';
-export const initialStateDirection: Direction = 'rtl';
+export const initialStateLanguage: TypeLanguage = 'fa';
 
 const getThemeModeFromLocalStorage = (lsKey: string): PaletteMode => {
   if (!localStorage) {
@@ -42,16 +44,16 @@ const getThemeModeFromLocalStorage = (lsKey: string): PaletteMode => {
   }
 };
 
-export const getDirection = (): Direction => {
-  const ls = localStorage.getItem(I18N_CONFIG_KEY) ?? initialStateDirection;
+export const getLanguage = (): TypeLanguage => {
+  const ls = localStorage.getItem(I18N_CONFIG_KEY) ?? initialStateLanguage;
   if (ls) {
     try {
-      return ls as Direction;
+      return ls as TypeLanguage;
     } catch (er) {
       console.error(er);
     }
   }
-  return initialStateDirection;
+  return initialStateLanguage;
 };
 
 export function setAttributesLinkStyle() {
@@ -60,26 +62,22 @@ export function setAttributesLinkStyle() {
 
   if (lan === 'en') {
     htmlPage?.setAttribute('dir', 'ltr');
-    htmlPage?.setAttribute('style', 'direction: ltr');
+    htmlPage?.setAttribute('style', 'language: ltr');
   } else {
     htmlPage?.setAttribute('dir', 'rtl');
-    htmlPage?.setAttribute('style', 'direction: rtl');
+    htmlPage?.setAttribute('style', 'language: rtl');
   }
 }
 
 const defaultThemeMode: ThemeContextInterface = {
   themeMode: getThemeModeFromLocalStorage(ThemeModeKey),
   setThemeMode: (_mode: PaletteMode) => {},
-  direction: getDirection(),
-  setDirection: (_direction: Direction) => {}
+  toggleMode: (_mode: PaletteMode) => {},
+  language: getLanguage(),
+  setLanguage: (_language: TypeLanguage) => {}
 };
 
-const ThemeUIContext = createContext<ThemeContextInterface>({
-  themeMode: defaultThemeMode.themeMode,
-  setThemeMode: (_mode: PaletteMode) => {},
-  direction: defaultThemeMode.direction,
-  setDirection: (_direction: Direction) => {}
-});
+const ThemeUIContext = createContext<ThemeContextInterface>(defaultThemeMode);
 
 const useThemeMode = () => useContext<ThemeContextInterface>(ThemeUIContext);
 
@@ -88,20 +86,23 @@ const ThemeUIProvider: React.FC<ThemeUiContextInterface> = ({
   children
 }) => {
   const theme = useTheme();
-  const [themeMode, setThemeModeBase] = useState<PaletteMode>('dark');
-  const [direction, setDirectionBase] = useState<Direction>('rtl');
+  const [themeMode, setThemeModeBase] = useState<PaletteMode>(
+    initialStateThemoMode
+  );
+  const [language, setLanguageBase] =
+    useState<TypeLanguage>(initialStateLanguage);
 
-  const setDirection = useCallback((nextDirection: SetStateAction<any>) => {
-    setDirectionBase((prevDirection: Direction) => {
-      if (isFunction(nextDirection)) {
-        nextDirection = nextDirection(prevDirection);
+  const setLanguage = useCallback((nextLanguage: SetStateAction<any>) => {
+    setLanguageBase((prevLanguage: TypeLanguage) => {
+      if (isFunction(nextLanguage)) {
+        nextLanguage = nextLanguage(prevLanguage);
       }
 
-      if (isEqual(nextDirection, prevDirection)) {
-        return prevDirection;
+      if (isEqual(nextLanguage, prevLanguage)) {
+        return prevLanguage;
       }
 
-      return nextDirection;
+      return nextLanguage;
     });
   }, []);
 
@@ -109,11 +110,10 @@ const ThemeUIProvider: React.FC<ThemeUiContextInterface> = ({
     console.log('4444444444');
     const updatedMode = _mode;
     setThemeModeBase(updatedMode);
-    // themeModeSwitchHelper(updatedMode)
     if (localStorage) {
       localStorage.setItem(ThemeModeKey, updatedMode);
     }
-    theme.palette.mode = _mode;
+    ThemeUIEvents?.toggleMode(_mode);
     document.documentElement.setAttribute('data-theme', updatedMode);
   };
 
@@ -122,8 +122,8 @@ const ThemeUIProvider: React.FC<ThemeUiContextInterface> = ({
     const handleVisibilityChange = () => {
       if (!document.hidden) {
         setThemeMode(getThemeModeFromLocalStorage(ThemeModeKey));
-        if (direction) {
-          setDirection(getDirection());
+        if (language) {
+          setLanguage(getLanguage());
           setAttributesLinkStyle();
         }
       }
@@ -137,8 +137,9 @@ const ThemeUIProvider: React.FC<ThemeUiContextInterface> = ({
   }, []);
 
   const value: ThemeContextInterface = {
-    direction,
-    setDirection,
+    language,
+    setLanguage,
+    toggleMode: ThemeUIEvents?.toggleMode,
     themeMode,
     setThemeMode
   };

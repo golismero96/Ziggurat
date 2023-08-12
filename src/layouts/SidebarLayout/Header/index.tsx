@@ -50,7 +50,7 @@ function Header() {
   const theme = useTheme();
   const { i18n } = useTranslation();
 
-  const { themeMode, setThemeMode, direction, setDirection } = useThemeMode();
+  const { setThemeMode, setLanguage } = useThemeMode();
   const switchMode = (_mode: PaletteMode) => {
     setThemeMode(_mode);
     console.log('5555555', _mode);
@@ -58,11 +58,12 @@ function Header() {
 
   const setThemeName = (direction: Direction) => {
     if (direction === 'ltr') {
+      setLanguage('en');
       i18n.changeLanguage('en');
     } else {
+      setLanguage('fa');
       i18n.changeLanguage('fa');
     }
-    setDirection(direction);
   };
 
   return (

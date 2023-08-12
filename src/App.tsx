@@ -33,20 +33,25 @@ const cacheLtr = createCache({
   insertionPoint
 });
 import '@fontsource/roboto'; // Defaults to weight 400
-import '@fontsource/roboto/400.css'; // Specify weight
-import '@fontsource/roboto/400-italic.css'; // Specify weight and style
+import { useTheme } from '@mui/material';
 
 function App() {
   const content = useRoutes(router);
+  const theme = useTheme();
 
-  const { direction } = useThemeMode();
+  const { themeMode, language } = useThemeMode();
 
   useEffect(() => {
+    console.log('themeMode1', theme.palette.mode);
+    theme.palette.mode = themeMode;
+    console.log('themeMode2', theme.palette.mode);
+  }, [themeMode]);
+  useEffect(() => {
     setAttributesLinkStyle();
-  }, [direction]);
+  }, [language]);
 
   return (
-    <CacheProvider value={direction === 'rtl' ? cacheRtl : cacheLtr}>
+    <CacheProvider value={language === 'fa' ? cacheRtl : cacheLtr}>
       <CssBaseline enableColorScheme={true} />
       {content}
     </CacheProvider>
