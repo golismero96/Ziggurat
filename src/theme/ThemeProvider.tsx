@@ -24,25 +24,6 @@ const ThemeProviderWrapper: FC<any> = (props) => {
     }
   };
 
-  // const { themeMode, language } = useThemeMode();
-
-  // useEffect(() => {
-  //   console.log('themeMode1', theme.palette.mode);
-  //   theme.palette.mode = themeMode;
-  //   console.log('themeMode2', theme.palette.mode);
-
-  // const theme = useMemo(
-  //   () =>
-  //     createTheme({
-  //       palette: {
-  //         mode,
-  //       },
-  //     }),
-  //   [mode]
-  // );
-  //
-  // }, [themeMode]);
-
   return (
     <ThemeUIContextProvider ThemeUIEvents={themeUIEvents}>
       <ThemeProvider theme={themeName}>{props.children}</ThemeProvider>
