@@ -107,7 +107,6 @@ const ThemeUIProvider: React.FC<ThemeUiContextInterface> = ({
   }, []);
 
   const setThemeMode = (_mode: PaletteMode) => {
-    console.log('4444444444');
     const updatedMode = _mode;
     setThemeModeBase(updatedMode);
     if (localStorage) {

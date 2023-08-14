@@ -53,7 +53,6 @@ function Header() {
   const { setThemeMode, setLanguage } = useThemeMode();
   const switchMode = (_mode: PaletteMode) => {
     setThemeMode(_mode);
-    console.log('5555555', _mode);
   };
 
   const setThemeName = (direction: Direction) => {

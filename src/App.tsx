@@ -33,19 +33,12 @@ const cacheLtr = createCache({
   insertionPoint
 });
 import '@fontsource/roboto'; // Defaults to weight 400
-import { useTheme } from '@mui/material';
 
 function App() {
   const content = useRoutes(router);
-  const theme = useTheme();
 
-  const { themeMode, language } = useThemeMode();
+  const { language } = useThemeMode();
 
-  useEffect(() => {
-    console.log('themeMode1', theme.palette.mode);
-    theme.palette.mode = themeMode;
-    console.log('themeMode2', theme.palette.mode);
-  }, [themeMode]);
   useEffect(() => {
     setAttributesLinkStyle();
   }, [language]);
