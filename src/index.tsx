@@ -12,6 +12,11 @@ import reportWebVitals from './reportWebVitals';
 import ThemeProvider from './theme/ThemeProvider';
 import './i18n';
 
+if (process.env.NODE_ENV === 'development') {
+  const { worker } = require('./setup/mocks/browser');
+  worker.start();
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

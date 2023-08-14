@@ -3,6 +3,8 @@
   "version": "2.0.0",
   "title": "Tokyo Free White React Typescript Admin Dashboard",
   "description": "This free and open source admin dashboard template is built for React and it’s bootstrapped from Facebook’s create-react-app. All NPM dependencies are up to date and it contains multiple fully customized components based on the popular frontend components framework, Material-UI.",
+  "homepage": "/",
+  "proxy": "http://127.0.0.1:8000/",
   "author": {
     "name": "CityJS.ir",
     "url": "https://cityjs.ir"
@@ -74,7 +76,6 @@
     "@typescript-eslint/eslint-plugin": "6.2.0",
     "@typescript-eslint/parser": "6.2.0",
     "autoprefixer": "^9.8.6",
-    "axios-mock-adapter": "^1.21.5",
     "eslint": "8.46.0",
     "eslint-config-airbnb-typescript": "17.1.0",
     "eslint-config-prettier": "8.9.0",
@@ -83,8 +84,12 @@
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-react": "7.33.1",
     "eslint-plugin-react-hooks": "4.6.0",
+    "msw": "^1.2.3",
     "postcss": "^8.4.27",
     "prettier": "3.0.0",
     "tailwindcss": "^3.3.3"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
