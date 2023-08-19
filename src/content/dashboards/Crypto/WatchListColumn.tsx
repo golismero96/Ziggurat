@@ -13,6 +13,7 @@ import Label from 'src/components/Label';
 import Text from 'src/components/Text';
 import Chart from 'react-apexcharts';
 import type { ApexOptions } from 'apexcharts';
+import { useGetPostsQuery } from 'src/rtk-query/crypto/counter/counterActions';
 
 const AvatarWrapper = styled(Avatar)(
   ({ theme }) => `
@@ -143,6 +144,7 @@ function WatchListColumn() {
     }
   ];
 
+  const { data, error, isLoading } = useGetPostsQuery('');
   return (
     <Grid
       container
@@ -177,6 +179,16 @@ function WatchListColumn() {
                 <Typography variant="h4" noWrap>
                   Bitcoin
                 </Typography>
+
+                {error ? (
+                  <>Oh no, there was an error</>
+                ) : isLoading ? (
+                  <>Loading...</>
+                ) : data ? (
+                  <>
+                    <h3>{data.username}</h3>
+                  </>
+                ) : null}
                 <Typography variant="subtitle1" noWrap>
                   BTC
                 </Typography>

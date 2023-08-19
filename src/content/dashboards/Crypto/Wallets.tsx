@@ -16,6 +16,7 @@ import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 import { RootState } from 'src/setup/redux/RootReducer';
 import { decrement, increment } from 'src/redux/crypto/counter/counterSlice';
 import { useAppSelector, useAppDispatch } from 'src/setup/redux/hooks';
+import { useGetPostsQuery } from 'src/rtk-query/crypto/counter/counterActions';
 
 const AvatarWrapper = styled(Avatar)(
   ({ theme }) => `
@@ -84,6 +85,8 @@ function Wallets() {
   );
   const dispatch = useAppDispatch();
 
+  const { data, error, isLoading, refetch } = useGetPostsQuery('');
+
   return (
     <>
       <Box
@@ -98,12 +101,23 @@ function Wallets() {
         <Button
           size="small"
           variant="outlined"
-          onClick={() => dispatch(decrement())}
+          onClick={() => refetch()}
           startIcon={<AddTwoToneIcon fontSize="small" />}
         >
-          Mines new wallet
+          Refetch
         </Button>
         <Typography variant="h3">{count}</Typography>
+
+        {error ? (
+          <>Oh no, there was an error</>
+        ) : isLoading ? (
+          <>Loading...</>
+        ) : data ? (
+          <>
+            <h3>{data.username}</h3>
+          </>
+        ) : null}
+
         <Button
           size="small"
           variant="outlined"
