@@ -13,6 +13,10 @@ import {
 } from '@mui/material';
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 
+import { RootState } from 'src/setup/redux/RootReducer';
+import { decrement, increment } from 'src/redux/crypto/counter/counterSlice';
+import { useAppSelector, useAppDispatch } from 'src/setup/redux/hooks';
+
 const AvatarWrapper = styled(Avatar)(
   ({ theme }) => `
     margin: ${theme.spacing(2, 0, 1, -0.5)};
@@ -75,6 +79,11 @@ const CardAddAction = styled(Card)(
 );
 
 function Wallets() {
+  const count: number = useAppSelector(
+    (state: RootState) => state.counter.value
+  );
+  const dispatch = useAppDispatch();
+
   return (
     <>
       <Box
@@ -89,6 +98,16 @@ function Wallets() {
         <Button
           size="small"
           variant="outlined"
+          onClick={() => dispatch(decrement())}
+          startIcon={<AddTwoToneIcon fontSize="small" />}
+        >
+          Mines new wallet
+        </Button>
+        <Typography variant="h3">{count}</Typography>
+        <Button
+          size="small"
+          variant="outlined"
+          onClick={() => dispatch(increment())}
           startIcon={<AddTwoToneIcon fontSize="small" />}
         >
           Add new wallet

@@ -10,6 +10,8 @@ import { SidebarProvider } from 'src/contexts/SidebarContext';
 import * as serviceWorker from 'src/serviceWorker';
 import reportWebVitals from './reportWebVitals';
 import ThemeProvider from './theme/ThemeProvider';
+import { store } from './setup/redux/store';
+import { Provider } from 'react-redux';
 import './i18n';
 
 if (process.env.NODE_ENV === 'development') {
@@ -27,7 +29,9 @@ root.render(
       <SidebarProvider>
         <BrowserRouter>
           <ThemeProvider>
-            <App />
+            <Provider store={store}>
+              <App />
+            </Provider>
           </ThemeProvider>
         </BrowserRouter>
       </SidebarProvider>
