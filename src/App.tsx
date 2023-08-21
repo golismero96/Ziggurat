@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRoutes } from 'react-router-dom';
 import router from 'src/router';
 
@@ -7,7 +8,7 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
-import { useEffect } from 'react';
+import './i18n';
 
 import { setAttributesLinkStyle, useThemeMode } from './theme/ThemeContext';
 
@@ -31,8 +32,7 @@ const cacheRtl = createCache({
 const cacheLtr = createCache({
   key: 'mui-style-ltr',
   insertionPoint
-});
-import '@fontsource/roboto'; // Defaults to weight 400
+}); // Defaults to weight 400
 
 function App() {
   const content = useRoutes(router);

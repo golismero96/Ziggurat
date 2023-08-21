@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import counterReducer from 'src/redux/crypto/counter/counterSlice';
+import counterReducer from 'src/rtk-query/crypto/counter/counterSlice';
 import { counterActions } from 'src/rtk-query/crypto/counter/counterActions';
 
 export const rootReducer = combineReducers({

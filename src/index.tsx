@@ -1,27 +1,26 @@
-import ReactDOM from 'react-dom/client';
-import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter } from 'react-router-dom';
-
-import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import '@fontsource/roboto';
 import 'nprogress/nprogress.css';
-import App from 'src/App';
+import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { SidebarProvider } from 'src/contexts/SidebarContext';
+import ThemeProvider from './theme/ThemeProvider';
+import App from 'src/App';
+import { store } from './setup/redux/store';
 import * as serviceWorker from 'src/serviceWorker';
 import reportWebVitals from './reportWebVitals';
-import ThemeProvider from './theme/ThemeProvider';
-import { store } from './setup/redux/store';
-import { Provider } from 'react-redux';
-import './i18n';
 
 if (process.env.NODE_ENV === 'development') {
   const { worker } = require('./setup/mocks/browser');
-  worker.start();
+  worker.start({
+    onUnhandledRequest: 'bypass'
+  });
 }
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <LocalizationProvider dateAdapter={AdapterDateFns}>

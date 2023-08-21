@@ -1,13 +1,12 @@
 import React, {
   SetStateAction,
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useState
 } from 'react';
-import { PaletteMode, useTheme } from '@mui/material';
-import { isEqual, isFunction } from 'lodash';
+import { PaletteMode } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 type TypeLanguage = 'en' | 'fa';
 
@@ -24,7 +23,7 @@ interface ThemeUiContextInterface {
   children: React.ReactNode;
 }
 
-const ThemeModeKey = 'theme_mode';
+const THEME_MODE_KEY = 'theme_mode';
 const I18N_CONFIG_KEY = 'i18nextLng';
 
 export const initialStateThemoMode: PaletteMode = 'light';
@@ -45,19 +44,14 @@ const getThemeModeFromLocalStorage = (lsKey: string): PaletteMode => {
 };
 
 export const getLanguage = (): TypeLanguage => {
-  const ls = localStorage.getItem(I18N_CONFIG_KEY) ?? initialStateLanguage;
-  if (ls) {
-    try {
-      return ls as TypeLanguage;
-    } catch (er) {
-      console.error(er);
-    }
-  }
-  return initialStateLanguage;
+  const lan = localStorage.getItem(I18N_CONFIG_KEY) ?? initialStateLanguage;
+  console.log(`getlanguage: ${lan}`);
+  return lan as TypeLanguage;
 };
 
-export function setAttributesLinkStyle() {
-  const lan = localStorage.getItem(I18N_CONFIG_KEY);
+export const setAttributesLinkStyle = () => {
+  const lan = getLanguage();
+  console.log(`lan: ${lan}`);
   const htmlPage = document.querySelector('html');
 
   if (lan === 'en') {
@@ -67,10 +61,10 @@ export function setAttributesLinkStyle() {
     htmlPage?.setAttribute('dir', 'rtl');
     htmlPage?.setAttribute('style', 'language: rtl');
   }
-}
+};
 
 const defaultThemeMode: ThemeContextInterface = {
-  themeMode: getThemeModeFromLocalStorage(ThemeModeKey),
+  themeMode: getThemeModeFromLocalStorage(THEME_MODE_KEY),
   setThemeMode: (_mode: PaletteMode) => {},
   toggleMode: (_mode: PaletteMode) => {},
   language: getLanguage(),
@@ -85,32 +79,27 @@ const ThemeUIProvider: React.FC<ThemeUiContextInterface> = ({
   ThemeUIEvents,
   children
 }) => {
-  const theme = useTheme();
+  const { i18n } = useTranslation();
   const [themeMode, setThemeModeBase] = useState<PaletteMode>(
     initialStateThemoMode
   );
-  const [language, setLanguageBase] =
-    useState<TypeLanguage>(initialStateLanguage);
+  const [language, setLanguageBase] = useState<TypeLanguage>(getLanguage());
 
-  const setLanguage = useCallback((nextLanguage: SetStateAction<any>) => {
-    setLanguageBase((prevLanguage: TypeLanguage) => {
-      if (isFunction(nextLanguage)) {
-        nextLanguage = nextLanguage(prevLanguage);
-      }
-
-      if (isEqual(nextLanguage, prevLanguage)) {
-        return prevLanguage;
-      }
-
-      return nextLanguage;
-    });
-  }, []);
+  const setLanguage = (_language: TypeLanguage) => {
+    console.log(`_language: ${_language}`);
+    const updatedLanguage = _language;
+    setLanguageBase(updatedLanguage);
+    if (localStorage) {
+      localStorage.setItem(I18N_CONFIG_KEY, updatedLanguage);
+    }
+    setAttributesLinkStyle();
+  };
 
   const setThemeMode = (_mode: PaletteMode) => {
     const updatedMode = _mode;
     setThemeModeBase(updatedMode);
     if (localStorage) {
-      localStorage.setItem(ThemeModeKey, updatedMode);
+      localStorage.setItem(THEME_MODE_KEY, updatedMode);
     }
     ThemeUIEvents?.toggleMode(_mode);
     document.documentElement.setAttribute('data-theme', updatedMode);
@@ -120,10 +109,11 @@ const ThemeUIProvider: React.FC<ThemeUiContextInterface> = ({
     // Update the web page with a focus on the page
     const handleVisibilityChange = () => {
       if (!document.hidden) {
-        setThemeMode(getThemeModeFromLocalStorage(ThemeModeKey));
+        setThemeMode(getThemeModeFromLocalStorage(THEME_MODE_KEY));
         if (language) {
-          setLanguage(getLanguage());
-          setAttributesLinkStyle();
+          const newLanguage = getLanguage();
+          setLanguage(newLanguage);
+          i18n.changeLanguage(newLanguage);
         }
       }
     };

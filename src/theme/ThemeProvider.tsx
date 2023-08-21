@@ -1,10 +1,10 @@
+import { FC, useState } from 'react';
 import { ThemeProvider } from '@mui/system';
 import { themeCreator } from './base';
 import {
   ThemeContextInterface,
   ThemeUIProvider as ThemeUIContextProvider
 } from './ThemeContext';
-import React, { FC, useMemo, useState } from 'react';
 import { PaletteMode } from '@mui/material';
 
 const ThemeProviderWrapper: FC<any> = (props) => {

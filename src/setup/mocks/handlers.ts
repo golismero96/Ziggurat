@@ -35,10 +35,10 @@ export const handlers = [
 
   rest.get('/posts', (req, res, ctx) => {
     // If authenticated, return a mocked user details
-    console.log('posts');
+    console.log('MSW posts');
     return res(
       ctx.status(200),
-      ctx.delay(5000),
+      ctx.delay(3000),
       ctx.json({
         username: 'admin'
       })

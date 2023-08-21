@@ -14,7 +14,11 @@ import {
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 
 import { RootState } from 'src/setup/redux/RootReducer';
-import { decrement, increment } from 'src/redux/crypto/counter/counterSlice';
+import {
+  setUsername,
+  increment,
+  CounterState
+} from 'src/rtk-query/crypto/counter/counterSlice';
 import { useAppSelector, useAppDispatch } from 'src/setup/redux/hooks';
 import { useGetPostsQuery } from 'src/rtk-query/crypto/counter/counterActions';
 
@@ -80,10 +84,11 @@ const CardAddAction = styled(Card)(
 );
 
 function Wallets() {
-  const count: number = useAppSelector(
-    (state: RootState) => state.counter.value
-  );
   const dispatch = useAppDispatch();
+
+  const counter: CounterState = useAppSelector(
+    (state: RootState) => state.counter
+  );
 
   const { data, error, isLoading, refetch } = useGetPostsQuery('');
 
@@ -97,16 +102,16 @@ function Wallets() {
           pb: 3
         }}
       >
-        <Typography variant="h3">Wallets</Typography>
+        <Typography variant="h3">{counter?.username}</Typography>
         <Button
           size="small"
           variant="outlined"
-          onClick={() => refetch()}
+          onClick={() => dispatch(setUsername(data?.username ?? 'Walltes'))}
           startIcon={<AddTwoToneIcon fontSize="small" />}
         >
           Refetch
         </Button>
-        <Typography variant="h3">{count}</Typography>
+        <Typography variant="h3">{counter?.count}</Typography>
 
         {error ? (
           <>Oh no, there was an error</>

@@ -1,6 +1,7 @@
-import { useContext, useEffect, useMemo } from 'react';
+import { useContext } from 'react';
 
 import {
+  useTheme,
   Box,
   alpha,
   Stack,
@@ -9,9 +10,7 @@ import {
   IconButton,
   Tooltip,
   styled,
-  useTheme,
   Toolbar,
-  Typography,
   Direction,
   PaletteMode
 } from '@mui/material';
@@ -33,7 +32,7 @@ const HeaderWrapper = styled(Box)(
         padding: ${theme.spacing(0, 2)};
         right: 0;
         z-index: 6;
-        background-color: ${alpha(theme.header.background, 0.15)};
+        background-color: ${alpha(theme.header.background, 1)};
         backdrop-filter: blur(3px);
         position: fixed;
         justify-content: space-between;
@@ -47,13 +46,10 @@ const HeaderWrapper = styled(Box)(
 
 function Header() {
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
-  const theme = useTheme();
   const { i18n } = useTranslation();
+  const theme = useTheme();
 
-  const { setThemeMode, setLanguage } = useThemeMode();
-  const switchMode = (_mode: PaletteMode) => {
-    setThemeMode(_mode);
-  };
+  const { setLanguage } = useThemeMode();
 
   const setThemeName = (direction: Direction) => {
     if (direction === 'ltr') {
@@ -113,31 +109,6 @@ function Header() {
             </IconButton>
           </Tooltip>
         </Box>
-
-        <Toolbar sx={{ height: 80, marginTop: '10px' }}>
-          <IconButton
-            sx={{ fontSize: '1rem' }}
-            onClick={() => {
-              const newMode = theme.palette.mode === 'dark' ? 'light' : 'dark';
-              switchMode(newMode);
-              theme.palette.mode = newMode;
-            }}
-            color="inherit"
-            disableTouchRipple
-            disableRipple
-          >
-            {theme.palette.mode === 'dark' ? (
-              <span role="img" aria-label="sun">
-                Go Light ☀️
-              </span>
-            ) : (
-              <span role="img" aria-label="moon">
-                Go Dark 🌚
-              </span>
-            )}
-          </IconButton>
-        </Toolbar>
-
         <button onClick={() => setThemeName('rtl')}>RTL</button>
         <button onClick={() => setThemeName('ltr')}>LTR</button>
         <div className="navbar-menu">
