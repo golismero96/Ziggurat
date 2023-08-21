@@ -45,13 +45,11 @@ const getThemeModeFromLocalStorage = (lsKey: string): PaletteMode => {
 
 export const getLanguage = (): TypeLanguage => {
   const lan = localStorage.getItem(I18N_CONFIG_KEY) ?? initialStateLanguage;
-  console.log(`getlanguage: ${lan}`);
   return lan as TypeLanguage;
 };
 
 export const setAttributesLinkStyle = () => {
   const lan = getLanguage();
-  console.log(`lan: ${lan}`);
   const htmlPage = document.querySelector('html');
 
   if (lan === 'en') {
@@ -86,7 +84,6 @@ const ThemeUIProvider: React.FC<ThemeUiContextInterface> = ({
   const [language, setLanguageBase] = useState<TypeLanguage>(getLanguage());
 
   const setLanguage = (_language: TypeLanguage) => {
-    console.log(`_language: ${_language}`);
     const updatedLanguage = _language;
     setLanguageBase(updatedLanguage);
     if (localStorage) {
