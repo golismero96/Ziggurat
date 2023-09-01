@@ -42,10 +42,10 @@ const signupSchema = object({
 
 // 👇 Infer the Schema to get TypeScript Type
 type ISignUp = {
-  name: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
+  name?: string;
+  email?: string;
+  password?: string;
+  passwordConfirm?: string;
 };
 
 const SignupPage: FC = () => {

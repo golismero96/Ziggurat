@@ -50,23 +50,24 @@ export const OauthMuiLink = styled(MuiLink)`
 `;
 
 // 👇 Login Schema with yup
-const loginSchema = object({
+const loginSchema = object().shape({
   email: string()
+    .required()
     .min(1, 'Email is required')
-    .email('Email is invalid')
-    .required(),
+    .email('Email is invalid'),
   password: string()
+    .required()
     .min(1, 'Password is required')
     .min(8, 'Password must be more than 8 characters')
-    .max(32, 'Password must be less than 32 characters')
-    .required(),
+    .max(32, 'Password must be less than 32 characters'),
   persistUser: boolean().optional()
 });
 
+// TODO: They should just be strings but are undefined and string
 // 👇 Infer the Schema to get the TS Type
 type ILogin = {
-  email: string;
-  password: string;
+  email?: string;
+  password?: string;
   persistUser?: boolean;
 };
 
