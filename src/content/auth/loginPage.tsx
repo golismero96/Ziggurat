@@ -6,7 +6,9 @@ import {
   Stack,
   Link as MuiLink,
   FormControlLabel,
-  Checkbox
+  Checkbox,
+  Avatar,
+  styled
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { FC } from 'react';
@@ -15,9 +17,13 @@ import { Link } from 'react-router-dom';
 import { boolean, object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import FormInput from '../pages/Components/FormInput';
-import { ReactComponent as GoogleLogo } from '../assets/google.svg';
-import { ReactComponent as GitHubLogo } from '../assets/github.svg';
-import styled from '@emotion/styled';
+
+const AvatarWrapper = styled(Avatar)(
+  ({ theme }) => `
+    width: ${theme.spacing(3.5)};
+    height: ${theme.spacing(3)};
+`
+);
 
 // 👇 Styled React Route Dom Link Component
 export const LinkItem = styled(Link)`
@@ -218,11 +224,17 @@ const LoginPage: FC = () => {
                     sx={{ paddingLeft: { sm: '3rem' }, rowGap: '1rem' }}
                   >
                     <OauthMuiLink href="">
-                      <GoogleLogo style={{ height: '2rem' }} />
+                      <AvatarWrapper
+                        src="/static/images/logo/google.svg"
+                        style={{ height: '2rem' }}
+                      />
                       Google
                     </OauthMuiLink>
                     <OauthMuiLink href="">
-                      <GitHubLogo style={{ height: '2rem' }} />
+                      <AvatarWrapper
+                        src="/static/images/logo/github.svg"
+                        style={{ height: '2rem' }}
+                      />
                       GitHub
                     </OauthMuiLink>
                   </Box>
