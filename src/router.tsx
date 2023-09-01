@@ -7,12 +7,11 @@ import BaseLayout from 'src/layouts/BaseLayout';
 
 import SuspenseLoader from 'src/components/SuspenseLoader';
 
-const Loader = (Component) => (props) =>
-  (
-    <Suspense fallback={<SuspenseLoader />}>
-      <Component {...props} />
-    </Suspense>
-  );
+const Loader = (Component) => (props) => (
+  <Suspense fallback={<SuspenseLoader />}>
+    <Component {...props} />
+  </Suspense>
+);
 
 // Pages
 
@@ -76,6 +75,9 @@ const StatusMaintenance = Loader(
   lazy(() => import('src/content/pages/Status/Maintenance'))
 );
 
+const LoginPage = Loader(lazy(() => import('src/content/auth/loginPage')));
+const SignupPage = Loader(lazy(() => import('src/content/auth/SignupPage')));
+
 const routes: RouteObject[] = [
   {
     path: '',
@@ -113,6 +115,14 @@ const routes: RouteObject[] = [
             element: <StatusComingSoon />
           }
         ]
+      },
+      {
+        path: 'login',
+        element: <LoginPage />
+      },
+      {
+        path: 'signup',
+        element: <SignupPage />
       },
       {
         path: '*',
