@@ -1,9 +1,13 @@
 {
-    "Welcome to React": "سلام دنیا",
-    "title": "Welcome to react using react-i18next",
-    "description": {
-      "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-      "part2": "Switch language between english and german using buttons above."
-    },
-    "loading": "در حال بارگذاری..."
-  }
+  "light": "روشن",
+  "dark": "تاریک",
+  "farsi": "فارسی",
+  "english": "انگلیسی",
+  "Welcome to React": "سلام دنیا",
+  "title": "Welcome to react using react-i18next",
+  "description": {
+    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
+    "part2": "Switch language between english and german using buttons above."
+  },
+  "loading": "در حال بارگذاری..."
+}

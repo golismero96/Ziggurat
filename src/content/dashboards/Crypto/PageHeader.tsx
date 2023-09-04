@@ -1,5 +1,4 @@
-import { Typography, Avatar, Grid } from '@mui/material';
-import { useTheme } from '@mui/material';
+import { Typography, Avatar, Grid, useTheme } from '@mui/material';
 import { Trans, useTranslation } from 'react-i18next';
 
 function PageHeader() {

@@ -8,7 +8,7 @@ import React, {
 import { PaletteMode } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
-type TypeLanguage = 'en' | 'fa';
+export type TypeLanguage = 'en' | 'fa';
 
 export interface ThemeContextInterface {
   themeMode?: PaletteMode;

@@ -9,10 +9,7 @@ import {
   Divider,
   IconButton,
   Tooltip,
-  styled,
-  Toolbar,
-  Direction,
-  PaletteMode
+  styled
 } from '@mui/material';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import { SidebarContext } from 'src/contexts/SidebarContext';
@@ -22,7 +19,6 @@ import HeaderButtons from './Buttons';
 import HeaderUserbox from './Userbox';
 import HeaderMenu from './Menu';
 
-import { useTranslation } from 'react-i18next';
 import { useThemeMode } from 'src/theme/ThemeContext';
 
 const HeaderWrapper = styled(Box)(
@@ -46,20 +42,7 @@ const HeaderWrapper = styled(Box)(
 
 function Header() {
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
-  const { i18n } = useTranslation();
   const theme = useTheme();
-
-  const { setLanguage } = useThemeMode();
-
-  const setThemeName = (direction: Direction) => {
-    if (direction === 'ltr') {
-      setLanguage('en');
-      i18n.changeLanguage('en');
-    } else {
-      setLanguage('fa');
-      i18n.changeLanguage('fa');
-    }
-  };
 
   return (
     <HeaderWrapper
@@ -109,21 +92,6 @@ function Header() {
             </IconButton>
           </Tooltip>
         </Box>
-        <button onClick={() => setThemeName('rtl')}>RTL</button>
-        <button onClick={() => setThemeName('ltr')}>LTR</button>
-        <div className="navbar-menu">
-          <div className="navbar-end">
-            <div className="navbar-item">
-              <select
-                value={i18n.language}
-                onChange={(e) => i18n.changeLanguage(e.target.value)}
-              >
-                <option value="en">English</option>
-                <option value="fa">Persian</option>
-              </select>
-            </div>
-          </div>
-        </div>
       </Box>
     </HeaderWrapper>
   );
