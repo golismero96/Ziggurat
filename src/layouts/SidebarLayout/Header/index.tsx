@@ -19,8 +19,6 @@ import HeaderButtons from './Buttons';
 import HeaderUserbox from './Userbox';
 import HeaderMenu from './Menu';
 
-import { useThemeMode } from 'src/theme/ThemeContext';
-
 const HeaderWrapper = styled(Box)(
   ({ theme }) => `
         height: ${theme.header.height};

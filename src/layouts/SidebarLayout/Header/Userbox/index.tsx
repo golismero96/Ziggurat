@@ -16,7 +16,8 @@ import {
   Link,
   Typography,
   FormControl,
-  NativeSelect
+  NativeSelect,
+  useTheme
 } from '@mui/material';
 
 import { useTranslation } from 'react-i18next';
@@ -65,7 +66,8 @@ const UserBoxDescription = styled(Typography)(
 
 function HeaderUserbox() {
   const { t, i18n } = useTranslation();
-  const { setLanguage, language } = useThemeMode();
+  const { setLanguage, language, toggleFontFamily } = useThemeMode();
+  const theme = useTheme();
 
   const user = {
     name: 'Catherine Pike',
@@ -79,6 +81,7 @@ function HeaderUserbox() {
   const setThemeName = (language: TypeLanguage) => {
     setLanguage(language);
     i18n.changeLanguage(language);
+    toggleFontFamily('yekan');
     document.body.click();
   };
 

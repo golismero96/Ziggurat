@@ -12,6 +12,7 @@ import App from 'src/App';
 import { store } from './setup/redux/store';
 import * as serviceWorker from 'src/serviceWorker';
 import reportWebVitals from './reportWebVitals';
+import 'yekan-fontface';
 
 if (process.env.NODE_ENV === 'development') {
   const { worker } = require('./setup/mocks/browser');

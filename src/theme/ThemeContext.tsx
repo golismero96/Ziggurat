@@ -16,6 +16,7 @@ export interface ThemeContextInterface {
   toggleMode: (mode: PaletteMode) => void;
   language?: TypeLanguage;
   setLanguage?: (nextLanguage: SetStateAction<TypeLanguage>) => void;
+  toggleFontFamily: (fontFamily: string) => void;
 }
 
 interface ThemeUiContextInterface {
@@ -66,7 +67,8 @@ const defaultThemeMode: ThemeContextInterface = {
   setThemeMode: (_mode: PaletteMode) => {},
   toggleMode: (_mode: PaletteMode) => {},
   language: getLanguage(),
-  setLanguage: (_language: TypeLanguage) => {}
+  setLanguage: (_language: TypeLanguage) => {},
+  toggleFontFamily: (_fontFamily: string) => {}
 };
 
 const ThemeUIContext = createContext<ThemeContextInterface>(defaultThemeMode);
@@ -127,7 +129,8 @@ const ThemeUIProvider: React.FC<ThemeUiContextInterface> = ({
     setLanguage,
     toggleMode: ThemeUIEvents?.toggleMode,
     themeMode,
-    setThemeMode
+    setThemeMode,
+    toggleFontFamily: ThemeUIEvents?.toggleFontFamily
   };
   return (
     <ThemeUIContext.Provider value={value}>{children}</ThemeUIContext.Provider>
