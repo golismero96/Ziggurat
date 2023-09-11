@@ -81,7 +81,7 @@ function HeaderUserbox() {
   const setThemeName = (language: TypeLanguage) => {
     setLanguage(language);
     i18n.changeLanguage(language);
-    toggleFontFamily('yekan');
+    toggleFontFamily();
     document.body.click();
   };
 

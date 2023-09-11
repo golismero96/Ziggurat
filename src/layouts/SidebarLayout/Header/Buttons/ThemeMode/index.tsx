@@ -9,14 +9,10 @@ const HeaderThemeMode = () => {
   const theme = useTheme();
 
   const { setThemeMode } = useThemeMode();
-  const switchMode = (_mode: PaletteMode) => {
-    setThemeMode(_mode);
-  };
 
   const changeThemeMode = () => {
     const newMode = theme.palette.mode === 'dark' ? 'light' : 'dark';
-    switchMode(newMode);
-    theme.palette.mode = newMode;
+    setThemeMode(newMode);
   };
   return (
     <IconButton color="primary" onClick={changeThemeMode}>

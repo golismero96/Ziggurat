@@ -16,7 +16,7 @@ export interface ThemeContextInterface {
   toggleMode: (mode: PaletteMode) => void;
   language?: TypeLanguage;
   setLanguage?: (nextLanguage: SetStateAction<TypeLanguage>) => void;
-  toggleFontFamily: (fontFamily: string) => void;
+  toggleFontFamily: () => void;
 }
 
 interface ThemeUiContextInterface {
@@ -30,12 +30,12 @@ const I18N_CONFIG_KEY = 'i18nextLng';
 export const initialStateThemoMode: PaletteMode = 'light';
 export const initialStateLanguage: TypeLanguage = 'fa';
 
-const getThemeModeFromLocalStorage = (lsKey: string): PaletteMode => {
+export const getThemeModeFromLocalStorage = (): PaletteMode => {
   if (!localStorage) {
     return initialStateThemoMode;
   }
 
-  const data = localStorage.getItem(lsKey);
+  const data = localStorage.getItem(THEME_MODE_KEY);
 
   if (data === 'dark' || data === 'light') {
     return data;
@@ -63,12 +63,12 @@ export const setAttributesLinkStyle = () => {
 };
 
 const defaultThemeMode: ThemeContextInterface = {
-  themeMode: getThemeModeFromLocalStorage(THEME_MODE_KEY),
+  themeMode: getThemeModeFromLocalStorage(),
   setThemeMode: (_mode: PaletteMode) => {},
   toggleMode: (_mode: PaletteMode) => {},
   language: getLanguage(),
   setLanguage: (_language: TypeLanguage) => {},
-  toggleFontFamily: (_fontFamily: string) => {}
+  toggleFontFamily: () => {}
 };
 
 const ThemeUIContext = createContext<ThemeContextInterface>(defaultThemeMode);
@@ -92,23 +92,24 @@ const ThemeUIProvider: React.FC<ThemeUiContextInterface> = ({
       localStorage.setItem(I18N_CONFIG_KEY, updatedLanguage);
     }
     setAttributesLinkStyle();
+    // TODO: وقتی تم در لوکال استوریج دارک هست و ظاهر سایت هم دارک هست. به یک تب دیگر جابجا بشیم و برگردیم روی تب پنل، ظاهر روشن میشه. بخاطره کد زیر . باید یک فکری براش بشه
+    ThemeUIEvents?.toggleFontFamily();
   };
 
   const setThemeMode = (_mode: PaletteMode) => {
-    const updatedMode = _mode;
-    setThemeModeBase(updatedMode);
+    setThemeModeBase(_mode);
     if (localStorage) {
-      localStorage.setItem(THEME_MODE_KEY, updatedMode);
+      localStorage.setItem(THEME_MODE_KEY, _mode);
     }
     ThemeUIEvents?.toggleMode(_mode);
-    document.documentElement.setAttribute('data-theme', updatedMode);
+    document.documentElement.setAttribute('data-theme', _mode);
   };
 
   useEffect(() => {
     // Update the web page with a focus on the page
     const handleVisibilityChange = () => {
       if (!document.hidden) {
-        setThemeMode(getThemeModeFromLocalStorage(THEME_MODE_KEY));
+        setThemeMode(getThemeModeFromLocalStorage());
         if (language) {
           const newLanguage = getLanguage();
           setLanguage(newLanguage);

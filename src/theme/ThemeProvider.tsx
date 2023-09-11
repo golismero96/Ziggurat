@@ -1,9 +1,10 @@
 import { FC, useState } from 'react';
-import { ThemeProvider } from '@mui/system';
+import { ThemeProvider } from '@mui/material';
 import { themeCreator } from './base';
 import {
   ThemeContextInterface,
-  ThemeUIProvider as ThemeUIContextProvider
+  ThemeUIProvider as ThemeUIContextProvider,
+  getLanguage
 } from './ThemeContext';
 import { PaletteMode } from '@mui/material';
 
@@ -20,31 +21,30 @@ const ThemeProviderWrapper: FC<any> = (props) => {
         }
       });
     },
-    toggleFontFamily: (changeFont: string) => {
-      let fontFamily = '';
-      console.log('test', changeFont);
-      if (themeName.typography.fontFamily.includes(changeFont)) {
-        console.log('test1', fontFamily);
-        fontFamily = `${changeFont},${themeName.typography.fontFamily}`;
-        console.log('test2', fontFamily);
-      } else {
-        console.log('test3', fontFamily);
-        fontFamily = themeName.typography.fontFamily.replace(
-          `${changeFont},`,
-          ''
-        );
-        console.log('test4', fontFamily);
-      }
+    toggleFontFamily: () => {
+      const changeFont = 'yekan';
+
+      // رشته فونت اصلی
+      const originalFontString = themeName?.typography?.fontFamily;
+
+      // اگر فونت وجود داشت، آن حذف میشود. در غیر این صورت، آن اضافه میشود.
+      const newFontString =
+        getLanguage() === 'en'
+          ? originalFontString.replace(new RegExp(changeFont + ',', 'g'), '')
+          : changeFont + ',' + originalFontString;
+
+      console.log('newFontString1', newFontString);
       setThemeName({
         ...themeName,
         typography: {
           ...themeName.typography,
-          fontFamily: fontFamily
+          fontFamily: newFontString
         }
       });
     }
   };
 
+  console.log('newFontString', themeName);
   return (
     <ThemeUIContextProvider ThemeUIEvents={themeUIEvents}>
       <ThemeProvider theme={themeName}>{props.children}</ThemeProvider>

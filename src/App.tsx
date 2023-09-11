@@ -10,7 +10,11 @@ import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import './i18n';
 
-import { setAttributesLinkStyle, useThemeMode } from './theme/ThemeContext';
+import {
+  getThemeModeFromLocalStorage,
+  setAttributesLinkStyle,
+  useThemeMode
+} from './theme/ThemeContext';
 
 const isBrowser = typeof document !== 'undefined';
 let insertionPoint;
@@ -37,11 +41,16 @@ const cacheLtr = createCache({
 function App() {
   const content = useRoutes(router);
 
-  const { language } = useThemeMode();
+  const { language, setThemeMode, toggleFontFamily } = useThemeMode();
 
   useEffect(() => {
     setAttributesLinkStyle();
+    toggleFontFamily();
   }, [language]);
+
+  useEffect(() => {
+    setThemeMode(getThemeModeFromLocalStorage());
+  }, []);
 
   return (
     <CacheProvider value={language === 'fa' ? cacheRtl : cacheLtr}>
