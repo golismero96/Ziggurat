@@ -1,32 +1,35 @@
-{
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": [
-    "plugin:react/recommended",
-    "airbnb-typescript",
-    "plugin:react/jsx-runtime",
-    "plugin:prettier/recommended"
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
   ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
+  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
+    tsconfigRootDir: "./src/..",
+    ecmaFeatures: {
+      jsx: true,
     },
-    "ecmaVersion": 11,
-    "project": "./tsconfig.json",
-    "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
-  "settings": {
-    "react": {
-      "pragma": "React",
-      "fragment": "Fragment",
-      "version": "detect"
-    }
+  parser: "@typescript-eslint/parser",
+  plugins: ["react", "react-refresh", "@typescript-eslint"],
+  settings: {
+    react: {
+      pragma: "React",
+      fragment: "Fragment",
+      version: "detect",
+    },
   },
-  "rules": {
+  rules: {
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
     "prettier/prettier": "off",
     "react/jsx-filename-extension": "off",
     "import/no-unresolved": "off",
@@ -52,11 +55,11 @@
     "react/jsx-max-props-per-line": [
       1,
       {
-        "maximum": 2,
-        "when": "multiline"
-      }
+        maximum: 2,
+        when: "multiline",
+      },
     ],
-    "indent": "off",
+    indent: "off",
     "@typescript-eslint/indent": [0],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["off"],
@@ -64,6 +67,6 @@
     "@typescript-eslint/no-shadow": ["off"],
     "@typescript-eslint/dot-notation": ["off"],
     "react/prop-types": ["off"],
-    "@typescript-eslint/naming-convention": ["off"]
-  }
-}
+    "@typescript-eslint/naming-convention": ["off"],
+  },
+};

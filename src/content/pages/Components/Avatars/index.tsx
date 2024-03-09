@@ -1,21 +1,21 @@
-import { Helmet } from 'react-helmet-async';
-import PageTitle from 'src/components/PageTitle';
-import PageTitleWrapper from 'src/components/PageTitleWrapper';
+import { Helmet } from "react-helmet-async";
+import PageTitle from "src/components/PageTitle";
+import PageTitleWrapper from "src/components/PageTitleWrapper";
 import {
   Container,
   Grid,
   Card,
   CardHeader,
   CardContent,
-  Divider
-} from '@mui/material';
-import Footer from 'src/components/Footer';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import { deepOrange, deepPurple, green, pink } from '@mui/material/colors';
-import FolderIcon from '@mui/icons-material/Folder';
-import PageviewIcon from '@mui/icons-material/Pageview';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+  Divider,
+} from "@mui/material";
+import Footer from "src/components/Footer";
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
+import { deepOrange, deepPurple, green, pink } from "@mui/material/colors";
+import FolderIcon from "@mui/icons-material/Folder";
+import PageviewIcon from "@mui/icons-material/Pageview";
+import AssignmentIcon from "@mui/icons-material/Assignment";
 
 function stringToColor(string: string) {
   let hash = 0;
@@ -26,7 +26,7 @@ function stringToColor(string: string) {
     hash = string.charCodeAt(i) + ((hash << 5) - hash);
   }
 
-  let color = '#';
+  let color = "#";
 
   for (i = 0; i < 3; i += 1) {
     const value = (hash >> (i * 8)) & 0xff;
@@ -40,9 +40,9 @@ function stringToColor(string: string) {
 function stringAvatar(name: string) {
   return {
     sx: {
-      bgcolor: stringToColor(name)
+      bgcolor: stringToColor(name),
     },
-    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`
+    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
   };
 }
 
@@ -98,9 +98,9 @@ function Avatars() {
                 </Stack>
                 <Divider sx={{ my: 5 }} />
                 <Stack direction="row" spacing={2}>
-                  <Avatar {...stringAvatar('Kent Dodds')} />
-                  <Avatar {...stringAvatar('Jed Watson')} />
-                  <Avatar {...stringAvatar('Tim Neutkens')} />
+                  <Avatar {...stringAvatar("Kent Dodds")} />
+                  <Avatar {...stringAvatar("Jed Watson")} />
+                  <Avatar {...stringAvatar("Tim Neutkens")} />
                 </Stack>
               </CardContent>
             </Card>

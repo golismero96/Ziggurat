@@ -1,9 +1,9 @@
-import { Box, Container, Card } from '@mui/material';
-import { Helmet } from 'react-helmet-async';
+import { Box, Container, Card } from "@mui/material";
+import { Helmet } from "react-helmet-async";
 
-import { styled } from '@mui/material/styles';
-import Logo from 'src/components/LogoSign';
-import Hero from './Hero';
+import { styled } from "@mui/material/styles";
+import Logo from "src/components/LogoSign";
+import Hero from "./Hero";
 
 const OverviewWrapper = styled(Box)(
   () => `

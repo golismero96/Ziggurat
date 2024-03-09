@@ -1,26 +1,26 @@
-import { Helmet } from 'react-helmet-async';
-import Footer from 'src/components/Footer';
+import { Helmet } from "react-helmet-async";
+import Footer from "src/components/Footer";
 
-import { Grid, Container } from '@mui/material';
+import { Grid, Container } from "@mui/material";
 
-import ProfileCover from './ProfileCover';
-import RecentActivity from './RecentActivity';
-import Feed from './Feed';
-import PopularTags from './PopularTags';
-import MyCards from './MyCards';
-import Addresses from './Addresses';
+import ProfileCover from "src/ProfileCover";
+import RecentActivity from "src/RecentActivity";
+import Feed from "src/Feed";
+import PopularTags from "src/PopularTags";
+import MyCards from "src/MyCards";
+import Addresses from "src/Addresses";
 
 function ManagementUserProfile() {
   const user = {
     savedCards: 7,
-    name: 'Catherine Pike',
-    coverImg: '/static/images/placeholders/covers/5.jpg',
-    avatar: '/static/images/avatars/4.jpg',
+    name: "Catherine Pike",
+    coverImg: "/static/images/placeholders/covers/5.jpg",
+    avatar: "/static/images/avatars/4.jpg",
     description:
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage",
-    jobtitle: 'Web Developer',
-    location: 'Barcelona, Spain',
-    followers: '465'
+    jobtitle: "Web Developer",
+    location: "Barcelona, Spain",
+    followers: "465",
   };
 
   return (

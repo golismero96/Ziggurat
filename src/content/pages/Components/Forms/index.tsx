@@ -1,60 +1,60 @@
-import { Helmet } from 'react-helmet-async';
-import PageTitle from 'src/components/PageTitle';
-import { useState } from 'react';
+import { Helmet } from "react-helmet-async";
+import PageTitle from "src/components/PageTitle";
+import { useState } from "react";
 
-import PageTitleWrapper from 'src/components/PageTitleWrapper';
+import PageTitleWrapper from "src/components/PageTitleWrapper";
 import {
   Container,
   Grid,
   Card,
   CardHeader,
   CardContent,
-  Divider
-} from '@mui/material';
-import Footer from 'src/components/Footer';
+  Divider,
+} from "@mui/material";
+import Footer from "src/components/Footer";
 
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
-import { pink } from '@mui/material/colors';
-import Checkbox from '@mui/material/Checkbox';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import { pink } from "@mui/material/colors";
+import Checkbox from "@mui/material/Checkbox";
 
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
-import Stack from '@mui/material/Stack';
-import Slider from '@mui/material/Slider';
-import VolumeDown from '@mui/icons-material/VolumeDown';
-import VolumeUp from '@mui/icons-material/VolumeUp';
+import Stack from "@mui/material/Stack";
+import Slider from "@mui/material/Slider";
+import VolumeDown from "@mui/icons-material/VolumeDown";
+import VolumeUp from "@mui/icons-material/VolumeUp";
 
-import Switch from '@mui/material/Switch';
+import Switch from "@mui/material/Switch";
 
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
+const label = { inputProps: { "aria-label": "Switch demo" } };
 
 const currencies = [
   {
-    value: 'USD',
-    label: '$'
+    value: "USD",
+    label: "$",
   },
   {
-    value: 'EUR',
-    label: '€'
+    value: "EUR",
+    label: "€",
   },
   {
-    value: 'BTC',
-    label: '฿'
+    value: "BTC",
+    label: "฿",
   },
   {
-    value: 'JPY',
-    label: '¥'
-  }
+    value: "JPY",
+    label: "¥",
+  },
 ];
 
 function Forms() {
-  const [currency, setCurrency] = useState('EUR');
+  const [currency, setCurrency] = useState("EUR");
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
@@ -94,7 +94,7 @@ function Forms() {
                 <Box
                   component="form"
                   sx={{
-                    '& .MuiTextField-root': { m: 1, width: '25ch' }
+                    "& .MuiTextField-root": { m: 1, width: "25ch" },
                   }}
                   noValidate
                   autoComplete="off"
@@ -123,7 +123,7 @@ function Forms() {
                       label="Read Only"
                       defaultValue="Hello World"
                       InputProps={{
-                        readOnly: true
+                        readOnly: true,
                       }}
                     />
                     <TextField
@@ -131,7 +131,7 @@ function Forms() {
                       label="Number"
                       type="number"
                       InputLabelProps={{
-                        shrink: true
+                        shrink: true,
                       }}
                     />
                     <TextField
@@ -173,7 +173,7 @@ function Forms() {
                       label="Read Only"
                       defaultValue="Hello World"
                       InputProps={{
-                        readOnly: true
+                        readOnly: true,
                       }}
                       variant="filled"
                     />
@@ -182,7 +182,7 @@ function Forms() {
                       label="Number"
                       type="number"
                       InputLabelProps={{
-                        shrink: true
+                        shrink: true,
                       }}
                       variant="filled"
                     />
@@ -227,7 +227,7 @@ function Forms() {
                       label="Read Only"
                       defaultValue="Hello World"
                       InputProps={{
-                        readOnly: true
+                        readOnly: true,
                       }}
                       variant="standard"
                     />
@@ -236,7 +236,7 @@ function Forms() {
                       label="Number"
                       type="number"
                       InputLabelProps={{
-                        shrink: true
+                        shrink: true,
                       }}
                       variant="standard"
                     />
@@ -266,7 +266,7 @@ function Forms() {
                 <Box
                   component="form"
                   sx={{
-                    '& .MuiTextField-root': { m: 1, width: '25ch' }
+                    "& .MuiTextField-root": { m: 1, width: "25ch" },
                   }}
                   noValidate
                   autoComplete="off"
@@ -293,7 +293,7 @@ function Forms() {
                       value={currency}
                       onChange={handleChange}
                       SelectProps={{
-                        native: true
+                        native: true,
                       }}
                       helperText="Please select your currency"
                     >
@@ -327,7 +327,7 @@ function Forms() {
                       value={currency}
                       onChange={handleChange}
                       SelectProps={{
-                        native: true
+                        native: true,
                       }}
                       helperText="Please select your currency"
                       variant="filled"
@@ -362,7 +362,7 @@ function Forms() {
                       value={currency}
                       onChange={handleChange}
                       SelectProps={{
-                        native: true
+                        native: true,
                       }}
                       helperText="Please select your currency"
                       variant="standard"
@@ -404,9 +404,9 @@ function Forms() {
                   defaultChecked
                   sx={{
                     color: pink[800],
-                    '&.Mui-checked': {
-                      color: pink[600]
-                    }
+                    "&.Mui-checked": {
+                      color: pink[600],
+                    },
                   }}
                 />
                 <Divider sx={{ my: 5 }} />

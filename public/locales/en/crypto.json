@@ -1,9 +1,0 @@
-{
-    "Welcome": {
-        "username": "Welcome, {{username}}!",
-        "world": "Welcome World!"
-    },
-    "basket_delivered": "{{count}} basket delivered",
-    "basket_delivered_other": "{{count}} baskets delivered",
-    "weekly_basket_title": "In this Week's Grootbasket — {{today, date}}"
-}

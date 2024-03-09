@@ -1,5 +1,5 @@
-import { Typography, Avatar, Grid, useTheme } from '@mui/material';
-import { Trans, useTranslation } from 'react-i18next';
+import { Typography, Avatar, Grid } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 function PageHeader() {
   const user = {
@@ -7,7 +7,6 @@ function PageHeader() {
     avatar: '/static/images/avatars/1.jpg'
   };
   const theme = useTheme();
-  const { t } = useTranslation(['crypto']);
 
   return (
     <Grid container alignItems="center">
@@ -24,55 +23,10 @@ function PageHeader() {
         />
       </Grid>
       <Grid item>
-        <Typography
-          component="h3"
-          gutterBottom
-          color={
-            theme.palette.mode === 'dark'
-              ? theme.colors.alpha.white[100]
-              : theme.colors.alpha.black[100]
-          }
-          variant="h3"
-        >
-          <Trans i18nKey="userMessagesUnread" values={{ username: user.name }}>
-            {t('Welcome.username')}
-          </Trans>
+        <Typography variant="h3" component="h3" gutterBottom>
+          Welcome, {user.name}!
         </Typography>
-        <Typography
-          component="h4"
-          gutterBottom
-          color={
-            theme.palette.mode === 'dark'
-              ? theme.colors.alpha.white[100]
-              : theme.colors.alpha.black[100]
-          }
-          variant="h4"
-        >
-          <Trans i18nKey="userMessagesUnread">{t('Welcome.world')}</Trans>
-        </Typography>
-        <Typography
-          component="h5"
-          gutterBottom
-          color={
-            theme.palette.mode === 'dark'
-              ? theme.colors.alpha.white[100]
-              : theme.colors.alpha.black[100]
-          }
-          variant="h5"
-        >
-          {t('basket_delivered', { count: 2342 })}
-          {t('weekly_basket_title', {
-            today: new Date()
-          })}
-        </Typography>
-        <Typography
-          variant="subtitle2"
-          color={
-            theme.palette.mode === 'dark'
-              ? theme.colors.alpha.white[70]
-              : theme.colors.alpha.black[70]
-          }
-        >
+        <Typography variant="subtitle2">
           Today is a good day to start trading crypto assets!
         </Typography>
       </Grid>

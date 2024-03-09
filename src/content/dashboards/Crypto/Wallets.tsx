@@ -13,15 +13,6 @@ import {
 } from '@mui/material';
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 
-import { RootState } from 'src/setup/redux/RootReducer';
-import {
-  setUsername,
-  increment,
-  CounterState
-} from 'src/rtk-query/crypto/counter/counterSlice';
-import { useAppSelector, useAppDispatch } from 'src/setup/redux/hooks';
-import { useGetPostsQuery } from 'src/rtk-query/crypto/counter/counterActions';
-
 const AvatarWrapper = styled(Avatar)(
   ({ theme }) => `
     margin: ${theme.spacing(2, 0, 1, -0.5)};
@@ -84,14 +75,6 @@ const CardAddAction = styled(Card)(
 );
 
 function Wallets() {
-  const dispatch = useAppDispatch();
-
-  const counter: CounterState = useAppSelector(
-    (state: RootState) => state.counter
-  );
-
-  const { data, error, isLoading, refetch } = useGetPostsQuery('');
-
   return (
     <>
       <Box
@@ -102,31 +85,10 @@ function Wallets() {
           pb: 3
         }}
       >
-        <Typography variant="h3">{counter?.username}</Typography>
+        <Typography variant="h3">Wallets</Typography>
         <Button
           size="small"
           variant="outlined"
-          onClick={() => dispatch(setUsername(data?.username ?? 'Walltes'))}
-          startIcon={<AddTwoToneIcon fontSize="small" />}
-        >
-          Refetch
-        </Button>
-        <Typography variant="h3">{counter?.count}</Typography>
-
-        {error ? (
-          <>Oh no, there was an error</>
-        ) : isLoading ? (
-          <>Loading...</>
-        ) : data ? (
-          <>
-            <h3>{data.username}</h3>
-          </>
-        ) : null}
-
-        <Button
-          size="small"
-          variant="outlined"
-          onClick={() => dispatch(increment())}
           startIcon={<AddTwoToneIcon fontSize="small" />}
         >
           Add new wallet

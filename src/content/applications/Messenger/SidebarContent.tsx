@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from "react";
 import {
   Box,
   Typography,
@@ -19,15 +19,15 @@ import {
   ListItemAvatar,
   ListItemText,
   lighten,
-  styled
-} from '@mui/material';
-import { formatDistance, subMinutes, subHours } from 'date-fns';
-import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
-import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-import Label from 'src/components/Label';
-import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
-import AlarmTwoToneIcon from '@mui/icons-material/AlarmTwoTone';
-import { Link as RouterLink } from 'react-router-dom';
+  styled,
+} from "@mui/material";
+import { formatDistance, subMinutes, subHours } from "date-fns";
+import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
+import SearchTwoToneIcon from "@mui/icons-material/SearchTwoTone";
+import Label from "src/components/Label";
+import CheckTwoToneIcon from "@mui/icons-material/CheckTwoTone";
+import AlarmTwoToneIcon from "@mui/icons-material/AlarmTwoTone";
+import { Link as RouterLink } from "react-router-dom";
 
 const AvatarSuccess = styled(Avatar)(
   ({ theme }) => `
@@ -94,28 +94,28 @@ const TabsContainerWrapper = styled(Box)(
 
 function SidebarContent() {
   const user = {
-    name: 'Catherine Pike',
-    avatar: '/static/images/avatars/1.jpg',
-    jobtitle: 'Software Developer'
+    name: "Catherine Pike",
+    avatar: "/static/images/avatars/1.jpg",
+    jobtitle: "Software Developer",
   };
 
   const [state, setState] = useState({
-    invisible: true
+    invisible: true,
   });
 
   const handleChange = (event) => {
     setState({
       ...state,
-      [event.target.name]: event.target.checked
+      [event.target.name]: event.target.checked,
     });
   };
 
-  const [currentTab, setCurrentTab] = useState<string>('all');
+  const [currentTab, setCurrentTab] = useState<string>("all");
 
   const tabs = [
-    { value: 'all', label: 'All' },
-    { value: 'unread', label: 'Unread' },
-    { value: 'archived', label: 'Archived' }
+    { value: "all", label: "All" },
+    { value: "unread", label: "Unread" },
+    { value: "archived", label: "Archived" },
   ];
 
   const handleTabsChange = (_event: ChangeEvent<{}>, value: string): void => {
@@ -129,7 +129,7 @@ function SidebarContent() {
         <Box
           sx={{
             ml: 1.5,
-            flex: 1
+            flex: 1,
           }}
         >
           <Box
@@ -147,7 +147,7 @@ function SidebarContent() {
             </Box>
             <IconButton
               sx={{
-                p: 1
+                p: 1,
               }}
               size="small"
               color="primary"
@@ -173,7 +173,7 @@ function SidebarContent() {
       <TextField
         sx={{
           mt: 2,
-          mb: 1
+          mb: 1,
         }}
         size="small"
         fullWidth
@@ -182,7 +182,7 @@ function SidebarContent() {
             <InputAdornment position="start">
               <SearchTwoToneIcon />
             </InputAdornment>
-          )
+          ),
         }}
         placeholder="Search..."
       />
@@ -190,7 +190,7 @@ function SidebarContent() {
       <Typography
         sx={{
           mb: 1,
-          mt: 2
+          mt: 2,
         }}
         variant="h3"
       >
@@ -213,7 +213,7 @@ function SidebarContent() {
       </TabsContainerWrapper>
 
       <Box mt={2}>
-        {currentTab === 'all' && (
+        {currentTab === "all" && (
           <List disablePadding component="div">
             <ListItemWrapper selected>
               <ListItemAvatar>
@@ -221,16 +221,16 @@ function SidebarContent() {
               </ListItemAvatar>
               <ListItemText
                 sx={{
-                  mr: 1
+                  mr: 1,
                 }}
                 primaryTypographyProps={{
-                  color: 'textPrimary',
-                  variant: 'h5',
-                  noWrap: true
+                  color: "textPrimary",
+                  variant: "h5",
+                  noWrap: true,
                 }}
                 secondaryTypographyProps={{
-                  color: 'textSecondary',
-                  noWrap: true
+                  color: "textSecondary",
+                  noWrap: true,
                 }}
                 primary="Zain Baptista"
                 secondary="Hey there, how are you today? Is it ok if I call you?"
@@ -245,16 +245,16 @@ function SidebarContent() {
               </ListItemAvatar>
               <ListItemText
                 sx={{
-                  mr: 1
+                  mr: 1,
                 }}
                 primaryTypographyProps={{
-                  color: 'textPrimary',
-                  variant: 'h5',
-                  noWrap: true
+                  color: "textPrimary",
+                  variant: "h5",
+                  noWrap: true,
                 }}
                 secondaryTypographyProps={{
-                  color: 'textSecondary',
-                  noWrap: true
+                  color: "textSecondary",
+                  noWrap: true,
                 }}
                 primary="Kierra Herwitz"
                 secondary="Hi! Did you manage to send me those documents"
@@ -266,16 +266,16 @@ function SidebarContent() {
               </ListItemAvatar>
               <ListItemText
                 sx={{
-                  mr: 1
+                  mr: 1,
                 }}
                 primaryTypographyProps={{
-                  color: 'textPrimary',
-                  variant: 'h5',
-                  noWrap: true
+                  color: "textPrimary",
+                  variant: "h5",
+                  noWrap: true,
                 }}
                 secondaryTypographyProps={{
-                  color: 'textSecondary',
-                  noWrap: true
+                  color: "textSecondary",
+                  noWrap: true,
                 }}
                 primary="Craig Vaccaro"
                 secondary="Ola, I still haven't received the program schedule"
@@ -287,16 +287,16 @@ function SidebarContent() {
               </ListItemAvatar>
               <ListItemText
                 sx={{
-                  mr: 1
+                  mr: 1,
                 }}
                 primaryTypographyProps={{
-                  color: 'textPrimary',
-                  variant: 'h5',
-                  noWrap: true
+                  color: "textPrimary",
+                  variant: "h5",
+                  noWrap: true,
                 }}
                 secondaryTypographyProps={{
-                  color: 'textSecondary',
-                  noWrap: true
+                  color: "textSecondary",
+                  noWrap: true,
                 }}
                 primary="Adison Press"
                 secondary="I recently did some buying on Amazon and now I'm stuck"
@@ -307,7 +307,7 @@ function SidebarContent() {
             </ListItemWrapper>
           </List>
         )}
-        {currentTab === 'unread' && (
+        {currentTab === "unread" && (
           <List disablePadding component="div">
             <ListItemWrapper>
               <ListItemAvatar>
@@ -315,16 +315,16 @@ function SidebarContent() {
               </ListItemAvatar>
               <ListItemText
                 sx={{
-                  mr: 1
+                  mr: 1,
                 }}
                 primaryTypographyProps={{
-                  color: 'textPrimary',
-                  variant: 'h5',
-                  noWrap: true
+                  color: "textPrimary",
+                  variant: "h5",
+                  noWrap: true,
                 }}
                 secondaryTypographyProps={{
-                  color: 'textSecondary',
-                  noWrap: true
+                  color: "textSecondary",
+                  noWrap: true,
                 }}
                 primary="Zain Baptista"
                 secondary="Hey there, how are you today? Is it ok if I call you?"
@@ -339,16 +339,16 @@ function SidebarContent() {
               </ListItemAvatar>
               <ListItemText
                 sx={{
-                  mr: 1
+                  mr: 1,
                 }}
                 primaryTypographyProps={{
-                  color: 'textPrimary',
-                  variant: 'h5',
-                  noWrap: true
+                  color: "textPrimary",
+                  variant: "h5",
+                  noWrap: true,
                 }}
                 secondaryTypographyProps={{
-                  color: 'textSecondary',
-                  noWrap: true
+                  color: "textSecondary",
+                  noWrap: true,
                 }}
                 primary="Adison Press"
                 secondary="I recently did some buying on Amazon and now I'm stuck"
@@ -359,11 +359,11 @@ function SidebarContent() {
             </ListItemWrapper>
           </List>
         )}
-        {currentTab === 'archived' && (
+        {currentTab === "archived" && (
           <Box pb={3}>
             <Divider
               sx={{
-                mb: 3
+                mb: 3,
               }}
             />
             <AvatarSuccess>
@@ -372,7 +372,7 @@ function SidebarContent() {
             <Typography
               sx={{
                 mt: 2,
-                textAlign: 'center'
+                textAlign: "center",
               }}
               variant="subtitle2"
             >
@@ -380,7 +380,7 @@ function SidebarContent() {
             </Typography>
             <Divider
               sx={{
-                mt: 3
+                mt: 3,
               }}
             />
           </Box>
@@ -389,7 +389,7 @@ function SidebarContent() {
       <Box display="flex" pb={1} mt={4} alignItems="center">
         <Typography
           sx={{
-            mr: 1
+            mr: 1,
           }}
           variant="h3"
         >
@@ -408,7 +408,7 @@ function SidebarContent() {
             <Typography
               variant="subtitle2"
               sx={{
-                lineHeight: 1
+                lineHeight: 1,
               }}
               color="text.primary"
             >
@@ -416,7 +416,7 @@ function SidebarContent() {
             </Typography>
             <Typography variant="subtitle1">
               {formatDistance(subMinutes(new Date(), 12), new Date(), {
-                addSuffix: true
+                addSuffix: true,
               })}
             </Typography>
           </Box>
@@ -427,7 +427,7 @@ function SidebarContent() {
               <Avatar
                 sx={{
                   width: 28,
-                  height: 28
+                  height: 28,
                 }}
                 component={RouterLink}
                 to="#"
@@ -439,7 +439,7 @@ function SidebarContent() {
               <Avatar
                 sx={{
                   width: 28,
-                  height: 28
+                  height: 28,
                 }}
                 component={RouterLink}
                 to="#"
@@ -451,7 +451,7 @@ function SidebarContent() {
               <Avatar
                 sx={{
                   width: 28,
-                  height: 28
+                  height: 28,
                 }}
                 component={RouterLink}
                 to="#"
@@ -476,7 +476,7 @@ function SidebarContent() {
             <Typography
               variant="subtitle2"
               sx={{
-                lineHeight: 1
+                lineHeight: 1,
               }}
               color="text.primary"
             >
@@ -484,7 +484,7 @@ function SidebarContent() {
             </Typography>
             <Typography variant="subtitle1">
               {formatDistance(subHours(new Date(), 4), new Date(), {
-                addSuffix: true
+                addSuffix: true,
               })}
             </Typography>
           </Box>
@@ -495,7 +495,7 @@ function SidebarContent() {
               <Avatar
                 sx={{
                   width: 28,
-                  height: 28
+                  height: 28,
                 }}
                 component={RouterLink}
                 to="#"
@@ -507,7 +507,7 @@ function SidebarContent() {
               <Avatar
                 sx={{
                   width: 28,
-                  height: 28
+                  height: 28,
                 }}
                 component={RouterLink}
                 to="#"

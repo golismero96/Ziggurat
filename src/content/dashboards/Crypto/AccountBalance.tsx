@@ -12,12 +12,12 @@ import {
   ListItem,
   ListItemText,
   List,
-  ListItemAvatar
-} from '@mui/material';
-import TrendingUp from '@mui/icons-material/TrendingUp';
-import Text from 'src/components/Text';
-import Chart from 'react-apexcharts';
-import type { ApexOptions } from 'apexcharts';
+  ListItemAvatar,
+} from "@mui/material";
+import TrendingUp from "@mui/icons-material/TrendingUp";
+import Text from "src/components/Text";
+import Chart from "react-apexcharts";
+import type { ApexOptions } from "apexcharts";
 
 const AvatarSuccess = styled(Avatar)(
   ({ theme }) => `
@@ -39,7 +39,7 @@ const ListItemAvatarWrapper = styled(ListItemAvatar)(
   padding: ${theme.spacing(0.5)};
   border-radius: 60px;
   background: ${
-    theme.palette.mode === 'dark'
+    theme.palette.mode === "dark"
       ? theme.colors.alpha.trueWhite[30]
       : alpha(theme.colors.alpha.black[100], 0.07)
   };
@@ -60,27 +60,27 @@ function AccountBalance() {
 
   const chartOptions: ApexOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       stacked: false,
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
     plotOptions: {
       pie: {
         donut: {
-          size: '60%'
-        }
-      }
+          size: "60%",
+        },
+      },
     },
-    colors: ['#ff9900', '#1c81c2', '#333', '#5c6ac0'],
+    colors: ["#ff9900", "#1c81c2", "#333", "#5c6ac0"],
     dataLabels: {
       enabled: true,
       formatter: function (val) {
-        return val + '%';
+        return val + "%";
       },
       style: {
-        colors: [theme.colors.alpha.trueWhite[100]]
+        colors: [theme.colors.alpha.trueWhite[100]],
       },
       background: {
         enabled: true,
@@ -95,8 +95,8 @@ function AccountBalance() {
           left: 1,
           blur: 1,
           color: theme.colors.alpha.black[70],
-          opacity: 0.5
-        }
+          opacity: 0.5,
+        },
       },
       dropShadow: {
         enabled: true,
@@ -104,25 +104,25 @@ function AccountBalance() {
         left: 1,
         blur: 1,
         color: theme.colors.alpha.black[50],
-        opacity: 0.5
-      }
+        opacity: 0.5,
+      },
     },
     fill: {
-      opacity: 1
+      opacity: 1,
     },
-    labels: ['Bitcoin', 'Ripple', 'Cardano', 'Ethereum'],
+    labels: ["Bitcoin", "Ripple", "Cardano", "Ethereum"],
     legend: {
       labels: {
-        colors: theme.colors.alpha.trueWhite[100]
+        colors: theme.colors.alpha.trueWhite[100],
       },
-      show: false
+      show: false,
     },
     stroke: {
-      width: 0
+      width: 0,
     },
     theme: {
-      mode: theme.palette.mode
-    }
+      mode: theme.palette.mode,
+    },
   };
 
   const chartSeries = [10, 20, 25, 45];
@@ -134,7 +134,7 @@ function AccountBalance() {
           <Box p={4}>
             <Typography
               sx={{
-                pb: 3
+                pb: 3,
               }}
               variant="h4"
             >
@@ -154,13 +154,13 @@ function AccountBalance() {
               <Box
                 display="flex"
                 sx={{
-                  py: 4
+                  py: 4,
                 }}
                 alignItems="center"
               >
                 <AvatarSuccess
                   sx={{
-                    mr: 2
+                    mr: 2,
                   }}
                   variant="rounded"
                 >
@@ -190,7 +190,7 @@ function AccountBalance() {
         </Grid>
         <Grid
           sx={{
-            position: 'relative'
+            position: "relative",
           }}
           display="flex"
           alignItems="center"
@@ -201,7 +201,7 @@ function AccountBalance() {
           <Box
             component="span"
             sx={{
-              display: { xs: 'none', md: 'inline-block' }
+              display: { xs: "none", md: "inline-block" },
             }}
           >
             <Divider absolute orientation="vertical" />
@@ -227,7 +227,7 @@ function AccountBalance() {
                 <List
                   disablePadding
                   sx={{
-                    width: '100%'
+                    width: "100%",
                   }}
                 >
                   <ListItem disableGutters>
@@ -239,11 +239,11 @@ function AccountBalance() {
                     </ListItemAvatarWrapper>
                     <ListItemText
                       primary="BTC"
-                      primaryTypographyProps={{ variant: 'h5', noWrap: true }}
+                      primaryTypographyProps={{ variant: "h5", noWrap: true }}
                       secondary="Bitcoin"
                       secondaryTypographyProps={{
-                        variant: 'subtitle2',
-                        noWrap: true
+                        variant: "subtitle2",
+                        noWrap: true,
                       }}
                     />
                     <Box>
@@ -262,11 +262,11 @@ function AccountBalance() {
                     </ListItemAvatarWrapper>
                     <ListItemText
                       primary="XRP"
-                      primaryTypographyProps={{ variant: 'h5', noWrap: true }}
+                      primaryTypographyProps={{ variant: "h5", noWrap: true }}
                       secondary="Ripple"
                       secondaryTypographyProps={{
-                        variant: 'subtitle2',
-                        noWrap: true
+                        variant: "subtitle2",
+                        noWrap: true,
                       }}
                     />
                     <Box>
@@ -285,11 +285,11 @@ function AccountBalance() {
                     </ListItemAvatarWrapper>
                     <ListItemText
                       primary="ADA"
-                      primaryTypographyProps={{ variant: 'h5', noWrap: true }}
+                      primaryTypographyProps={{ variant: "h5", noWrap: true }}
                       secondary="Cardano"
                       secondaryTypographyProps={{
-                        variant: 'subtitle2',
-                        noWrap: true
+                        variant: "subtitle2",
+                        noWrap: true,
                       }}
                     />
                     <Box>
@@ -308,11 +308,11 @@ function AccountBalance() {
                     </ListItemAvatarWrapper>
                     <ListItemText
                       primary="ETH"
-                      primaryTypographyProps={{ variant: 'h5', noWrap: true }}
+                      primaryTypographyProps={{ variant: "h5", noWrap: true }}
                       secondary="Ethereum"
                       secondaryTypographyProps={{
-                        variant: 'subtitle2',
-                        noWrap: true
+                        variant: "subtitle2",
+                        noWrap: true,
                       }}
                     />
                     <Box>

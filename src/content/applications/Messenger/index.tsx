@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import TopBarContent from './TopBarContent';
-import BottomBarContent from './BottomBarContent';
-import SidebarContent from './SidebarContent';
-import ChatContent from './ChatContent';
-import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
+import TopBarContent from "./TopBarContent";
+import BottomBarContent from "./BottomBarContent";
+import SidebarContent from "./SidebarContent";
+import ChatContent from "./ChatContent";
+import MenuTwoToneIcon from "@mui/icons-material/MenuTwoTone";
 
-import Scrollbar from 'src/components/Scrollbar';
+import Scrollbar from "src/components/Scrollbar";
 
 import {
   Box,
@@ -16,8 +16,8 @@ import {
   Divider,
   Drawer,
   IconButton,
-  useTheme
-} from '@mui/material';
+  useTheme,
+} from "@mui/material";
 
 const RootWrapper = styled(Box)(
   ({ theme }) => `
@@ -89,10 +89,10 @@ function ApplicationsMessenger() {
       <RootWrapper className="Mui-FixedWrapper">
         <DrawerWrapperMobile
           sx={{
-            display: { lg: 'none', xs: 'inline-block' }
+            display: { lg: "none", xs: "inline-block" },
           }}
           variant="temporary"
-          anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+          anchor={theme.direction === "rtl" ? "right" : "left"}
           open={mobileOpen}
           onClose={handleDrawerToggle}
         >
@@ -102,7 +102,7 @@ function ApplicationsMessenger() {
         </DrawerWrapperMobile>
         <Sidebar
           sx={{
-            display: { xs: 'none', lg: 'inline-block' }
+            display: { xs: "none", lg: "inline-block" },
           }}
         >
           <Scrollbar>
@@ -112,13 +112,13 @@ function ApplicationsMessenger() {
         <ChatWindow>
           <ChatTopBar
             sx={{
-              display: { xs: 'flex', lg: 'inline-block' }
+              display: { xs: "flex", lg: "inline-block" },
             }}
           >
             <IconButtonToggle
               sx={{
-                display: { lg: 'none', xs: 'flex' },
-                mr: 2
+                display: { lg: "none", xs: "flex" },
+                mr: 2,
               }}
               color="primary"
               onClick={handleDrawerToggle}

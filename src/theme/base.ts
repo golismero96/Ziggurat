@@ -3,7 +3,7 @@ import React from 'react';
 import { Theme } from '@mui/material';
 import { PureLightTheme } from './schemes/PureLightTheme';
 
-export function themeCreator(theme: string = 'PureLightTheme'): Theme {
+export function themeCreator(theme: string): Theme {
   return themeMap[theme];
 }
 
@@ -217,6 +217,7 @@ declare module '@mui/material/styles' {
         dark: string;
       };
     };
+
     general: {
       reactFrameworkColor: React.CSSProperties['color'];
       borderRadiusSm: string;

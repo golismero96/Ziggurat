@@ -1,7 +1,6 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 
 import {
-  useTheme,
   Box,
   alpha,
   Stack,
@@ -9,15 +8,16 @@ import {
   Divider,
   IconButton,
   Tooltip,
-  styled
-} from '@mui/material';
-import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
-import { SidebarContext } from 'src/contexts/SidebarContext';
-import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
+  styled,
+  useTheme,
+} from "@mui/material";
+import MenuTwoToneIcon from "@mui/icons-material/MenuTwoTone";
+import { SidebarContext } from "src/contexts/SidebarContext";
+import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
 
-import HeaderButtons from './Buttons';
-import HeaderUserbox from './Userbox';
-import HeaderMenu from './Menu';
+import HeaderButtons from "./Buttons";
+import HeaderUserbox from "./Userbox";
+import HeaderMenu from "./Menu";
 
 const HeaderWrapper = styled(Box)(
   ({ theme }) => `
@@ -26,7 +26,7 @@ const HeaderWrapper = styled(Box)(
         padding: ${theme.spacing(0, 2)};
         right: 0;
         z-index: 6;
-        background-color: ${alpha(theme.header.background, 1)};
+        background-color: ${alpha(theme.header.background, 0.95)};
         backdrop-filter: blur(3px);
         position: fixed;
         justify-content: space-between;
@@ -48,7 +48,7 @@ function Header() {
       alignItems="center"
       sx={{
         boxShadow:
-          theme.palette.mode === 'dark'
+          theme.palette.mode === "dark"
             ? `0 1px 0 ${alpha(
                 lighten(theme.colors.primary.main, 0.7),
                 0.15
@@ -59,7 +59,7 @@ function Header() {
               )}, 0px 5px 22px -4px ${alpha(
                 theme.colors.alpha.black[100],
                 0.1
-              )}`
+              )}`,
       }}
     >
       <Stack
@@ -77,7 +77,7 @@ function Header() {
           component="span"
           sx={{
             ml: 2,
-            display: { lg: 'none', xs: 'inline-block' }
+            display: { lg: "none", xs: "inline-block" },
           }}
         >
           <Tooltip arrow title="Toggle Menu">

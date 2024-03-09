@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 import { styled } from '@mui/material/styles';
 
@@ -87,11 +88,15 @@ function Status500() {
                   The server encountered an internal error and was not able to
                   complete your request
                 </Typography>
-                <Button 
+                <LoadingButton
                   onClick={handleClick}
+                  loading={pending}
                   variant="outlined"
-                  color="primary">
-                  Refresh view</Button>
+                  color="primary"
+                  startIcon={<RefreshTwoToneIcon />}
+                >
+                  Refresh view
+                </LoadingButton>
                 <Button href="/overview" variant="contained" sx={{ ml: 1 }}>
                   Go back
                 </Button>
