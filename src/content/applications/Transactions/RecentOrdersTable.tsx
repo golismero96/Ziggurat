@@ -29,7 +29,7 @@ import Label from "src/components/Label";
 import { CryptoOrder, CryptoOrderStatus } from "src/models/crypto_order";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
-import BulkActions from "src/BulkActions";
+import BulkActions from "./BulkActions";
 
 interface RecentOrdersTableProps {
   className?: string;

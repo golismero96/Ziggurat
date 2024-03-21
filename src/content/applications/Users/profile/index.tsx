@@ -3,12 +3,12 @@ import Footer from "src/components/Footer";
 
 import { Grid, Container } from "@mui/material";
 
-import ProfileCover from "src/ProfileCover";
-import RecentActivity from "src/RecentActivity";
-import Feed from "src/Feed";
-import PopularTags from "src/PopularTags";
-import MyCards from "src/MyCards";
-import Addresses from "src/Addresses";
+import ProfileCover from "./ProfileCover";
+import RecentActivity from "./RecentActivity";
+import Feed from "./Feed";
+import PopularTags from "./PopularTags";
+import MyCards from "./MyCards";
+import Addresses from "./Addresses";
 
 function ManagementUserProfile() {
   const user = {

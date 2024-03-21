@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Box,
   Typography,
   Hidden,
   Container,
   Button,
-  Grid
-} from '@mui/material';
-import { Helmet } from 'react-helmet-async';
-import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone';
-import LoadingButton from '@mui/lab/LoadingButton';
+  Grid,
+} from "@mui/material";
+import { Helmet } from "react-helmet-async";
+import RefreshTwoToneIcon from "@mui/icons-material/RefreshTwoTone";
+import LoadingButton from "@mui/lab/LoadingButton";
 
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 
 const GridWrapper = styled(Grid)(
   ({ theme }) => `
@@ -57,7 +57,7 @@ function Status500() {
       <MainContent>
         <Grid
           container
-          sx={{ height: '100%' }}
+          sx={{ height: "100%" }}
           alignItems="stretch"
           spacing={0}
         >
@@ -115,7 +115,7 @@ function Status500() {
               <Container maxWidth="sm">
                 <Box textAlign="center">
                   <TypographyPrimary variant="h1" sx={{ my: 2 }}>
-                    Tokyo Free White React Typescript Admin Dashboard
+                    Ziggurat Admin Dashboard
                   </TypographyPrimary>
                   <TypographySecondary
                     variant="h4"

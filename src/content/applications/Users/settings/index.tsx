@@ -1,15 +1,15 @@
 import { useState, ChangeEvent } from "react";
 import { Helmet } from "react-helmet-async";
-import PageHeader from "src/PageHeader";
+import PageHeader from "./PageHeader";
 import PageTitleWrapper from "src/components/PageTitleWrapper";
 import { Container, Tabs, Tab, Grid } from "@mui/material";
 import Footer from "src/components/Footer";
 import { styled } from "@mui/material/styles";
 
-import ActivityTab from "src/ActivityTab";
-import EditProfileTab from "src/EditProfileTab";
-import NotificationsTab from "src/NotificationsTab";
-import SecurityTab from "src/SecurityTab";
+import ActivityTab from "./ActivityTab";
+import EditProfileTab from "./EditProfileTab";
+import NotificationsTab from "./NotificationsTab";
+import SecurityTab from "./SecurityTab";
 
 const TabsWrapper = styled(Tabs)(
   () => `
